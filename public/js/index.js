@@ -1,3 +1,4 @@
+// const {nanoid}  = require('nanoid');
 let noteTitle;
 let noteText;
 let saveNoteBtn;
@@ -65,9 +66,14 @@ const renderActiveNote = () => {
 };
 
 const handleNoteSave = () => {
+  // let uid = () => {
+  //   return nanoid()
+  // }
+  // uid()
   const newNote = {
     title: noteTitle.value,
     text: noteText.value,
+    // id: uid
   };
   saveNote(newNote).then(() => {
     getAndRenderNotes();
