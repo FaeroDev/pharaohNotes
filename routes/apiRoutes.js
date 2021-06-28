@@ -20,7 +20,16 @@ module.exports = (app) => {
         res.json(newNote);
     }),
     
-    app.delete("/api/notes", (req, res) => {
+    app.delete(`/api/notes/:id`, (req, res) => {
         console.log(`notes delete route`)
+        console.log(req.params)
+        let noteID=req.params.id
+        console.log(noteID)
+        for (const x of db) {
+            if (x.id == noteID){
+                console.log(x)
+            }
+            
+        }
     })
 }
