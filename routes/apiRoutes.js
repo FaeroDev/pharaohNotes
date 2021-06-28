@@ -1,8 +1,10 @@
 const path = require("path")
+const fs = require('fs')
 
 const {nanoid} = require('nanoid')
 
 const db = require("../db/db")
+const { fstat } = require("fs")
 
 module.exports = (app) => {
 
@@ -15,9 +17,15 @@ module.exports = (app) => {
         console.log(req.body)
         console.log(uid)
         newNote.id = uid
-        console.log(newNote)
+        // console.log(newNote)
         db.push(newNote);
         res.json(newNote);
+        console.log(db)
+        try {
+            fs.writeFileSync(path.join(__dirname, '../db/db.json') ,JSON.stringify(db) )
+        } catch (error) {
+            throw(error)
+        }
     }),
     
     app.delete("/api/notes", (req, res) => {
