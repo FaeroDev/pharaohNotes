@@ -30,5 +30,6 @@ module.exports = (app) => {
     
     app.delete("/api/notes", (req, res) => {
         console.log(`notes delete route`)
+        console.log(req.route.path)
     })
 }
