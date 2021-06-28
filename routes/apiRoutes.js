@@ -33,10 +33,28 @@ module.exports = (app) => {
         console.log(req.params)
         let noteID=req.params.id
         console.log(noteID)
-        for (const x of db) {
-            if (x.id == noteID){
-                console.log(x)
+        // for (const x of db) {
+        //     if (x.id == noteID){
+        //         console.log(x)
+        //         console.log(db[0])
+        //         // db.splice(x, 1);
+        //     }
+        // }
+        for (let index = 0; index < db.length; index++) {
+            const element = db[index];
+            if (element.id == noteID){
+                console.log(element.title)
+                console.log(index)
+                console.log(db[index])
+                db.splice(index, 1)
+                try {
+                    fs.writeFileSync(path.join(__dirname, '../db/db.json') ,JSON.stringify(db) )
+                } catch (error) {
+                    throw(error)
+                }
             }
+            
+        
             
         }
     })
