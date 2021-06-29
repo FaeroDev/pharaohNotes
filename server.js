@@ -9,8 +9,8 @@ app.use(express.json())
 
 app.use(express.static('./public'));
 
-require('./routes/apiRoutes')(app)
-require('./routes/viewRoutes')(app)
+require('./routes/apiRoutes.min')(app)
+require('./routes/viewRoutes.min')(app)
 
 app.listen(PORT, () => console.log(`listening on PORT: ${PORT}`))
 
